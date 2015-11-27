@@ -72,6 +72,7 @@
     <Content Include="default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Assets\placeholder.jpg" />
+    <Content Include="View Listing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +105,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View Listing.aspx.cs">
+      <DependentUpon>View Listing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View Listing.aspx.designer.cs">
+      <DependentUpon>View Listing.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
