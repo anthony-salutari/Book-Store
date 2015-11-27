@@ -1,0 +1,6 @@
+C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\Book-Store.dll.config
+C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\Book-Store.dll
+C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\Book-Store.pdb
+C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\obj\Debug\Book-Store.csprojResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\obj\Debug\Book-Store.dll
+C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\obj\Debug\Book-Store.pdb
