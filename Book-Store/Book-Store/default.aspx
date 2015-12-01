@@ -49,6 +49,8 @@
 
     <div id="listings" runat="server">
 
+        <asp:TextBox ID="testBox" runat="server" Width="436px"></asp:TextBox>
+
     </div>
 
     </form>

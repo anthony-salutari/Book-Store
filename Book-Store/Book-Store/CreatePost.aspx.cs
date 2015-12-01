@@ -11,7 +11,7 @@ namespace Book_Store
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            bookImage.ImageUrl = "Assets/placeholder.jpg";
+            coverPhoto.ImageUrl = "Assets/placeholder.jpg";
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)
@@ -20,6 +20,30 @@ namespace Book_Store
             "Error",
             "alert('Are you sure you want to cancel this post?');",
             true);        
+        }
+
+        protected void submitButton_Click(object sender, EventArgs e)
+        {
+            Listing listing = new Listing();
+
+            listing.title = titleBox.Text;
+            listing.bookName = bookNameBox.Text;
+            listing.condition = conditionList.SelectedValue;
+            listing.price = priceBox.Text;
+            //listing.coverImage = bookImage.ImageUrl;
+            listing.description = descriptionBox.Text;
+            listing.date = DateTime.Now;
+        }
+
+        protected void uploadButton_Click(object sender, EventArgs e)
+        {
+            if (coverPhotoUpload.HasFile)
+            {
+                string path = Server.MapPath("Images/" + coverPhotoUpload.PostedFile.FileName);
+                coverPhotoUpload.SaveAs(path);
+
+                coverPhoto.ImageUrl = "Images/" + coverPhotoUpload.PostedFile.FileName;
+            }
         }
     }
 }

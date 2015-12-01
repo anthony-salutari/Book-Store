@@ -31,22 +31,22 @@ namespace Book_Store {
         protected global::System.Web.UI.WebControls.HyperLink homeLink;
         
         /// <summary>
-        /// TextBox1 control.
+        /// titleBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox titleBox;
         
         /// <summary>
-        /// TextBox2 control.
+        /// bookNameBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox bookNameBox;
         
         /// <summary>
         /// conditionList control.
@@ -76,13 +76,22 @@ namespace Book_Store {
         protected global::System.Web.UI.WebControls.TextBox descriptionBox;
         
         /// <summary>
-        /// bookImage control.
+        /// coverPhoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image bookImage;
+        protected global::System.Web.UI.WebControls.Image coverPhoto;
+        
+        /// <summary>
+        /// coverPhotoUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload coverPhotoUpload;
         
         /// <summary>
         /// uploadButton control.

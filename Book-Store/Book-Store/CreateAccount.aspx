@@ -21,15 +21,21 @@
         <asp:TextBox ID="emailBox" runat="server" TextMode="Email"></asp:TextBox>
         <br />
         <br />
-        <asp:Image ID="profileImage" runat="server" Height="100px" Width="100px" />
+        Profile picture:<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Image ID="profileImage" runat="server" Height="200px" Width="200px" />
         <br />
         <br />
-        <asp:Button ID="uploadButton" runat="server" Text="Upload Profile Image" />
+        <asp:FileUpload ID="photoUpload" runat="server" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="uploadButton" runat="server" OnClick="uploadButton_Click" Text="Upload" />
+        <br />
         <br />
         <br />
         <asp:Button ID="submitButton" runat="server" Text="Submit" />
 &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="cancelButton" runat="server" Text="Cancel" />
+        <asp:Button ID="cancelButton" runat="server" Text="Cancel" OnClick="cancelButton_Click" />
 
     </div>
     </form>

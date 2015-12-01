@@ -10,7 +10,7 @@
 namespace Book_Store {
     
     
-    public partial class View_Listing {
+    public partial class EditAccount {
         
         /// <summary>
         /// form1 control.
@@ -22,84 +22,57 @@ namespace Book_Store {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// homeLink control.
+        /// nameBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink homeLink;
+        protected global::System.Web.UI.WebControls.TextBox nameBox;
         
         /// <summary>
-        /// titleLabel control.
+        /// profilePicture control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label titleLabel;
+        protected global::System.Web.UI.WebControls.Image profilePicture;
         
         /// <summary>
-        /// bookNameLabel control.
+        /// pictureUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label bookNameLabel;
+        protected global::System.Web.UI.WebControls.FileUpload pictureUpload;
         
         /// <summary>
-        /// dateLabel control.
+        /// uploadButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label dateLabel;
+        protected global::System.Web.UI.WebControls.Button uploadButton;
         
         /// <summary>
-        /// userLabel control.
+        /// submitButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userLabel;
+        protected global::System.Web.UI.WebControls.Button submitButton;
         
         /// <summary>
-        /// coverImage control.
+        /// cancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image coverImage;
-        
-        /// <summary>
-        /// conditionLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label conditionLabel;
-        
-        /// <summary>
-        /// priceLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label priceLabel;
-        
-        /// <summary>
-        /// descriptionLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descriptionLabel;
+        protected global::System.Web.UI.WebControls.Button cancelButton;
     }
 }

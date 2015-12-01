@@ -18,6 +18,15 @@
         
         <br />
         <br />
+        Book name:
+        <asp:Label ID="bookNameLabel" runat="server" Text="Book Name"></asp:Label>
+        
+        <br />
+        <br />
+        Posted on:
+        <asp:Label ID="dateLabel" runat="server" Text="Date"></asp:Label>
+        <br />
+        <br />
         Posted by:
         <asp:Label ID="userLabel" runat="server" Text="User"></asp:Label>
         <br />

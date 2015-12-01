@@ -16,11 +16,11 @@
         
         <br />
         Listing title:&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="titleBox" runat="server" Width="300px"></asp:TextBox>
         <br />
         <br />
         Book name:&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="bookNameBox" runat="server" Width="300px"></asp:TextBox>
         <br />
         <br />
         Condition:&nbsp;&nbsp;&nbsp;
@@ -39,19 +39,22 @@
         Description:<br />
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="descriptionBox" runat="server" Height="150px" Width="500px"></asp:TextBox>
+        <asp:TextBox ID="descriptionBox" runat="server" Height="150px" Width="500px" TextMode="MultiLine"></asp:TextBox>
         <br />
         <br />
-        Picture:<br />
+        Cover photo:<br />
         <br />
-        <asp:Image ID="bookImage" runat="server" Height="200px" Width="200px" />
-        <br />
-        <br />
-        <asp:Button ID="uploadButton" runat="server" Text="Upload Cover Photo" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Image ID="coverPhoto" runat="server" Height="200px" Width="200px" />
         <br />
         <br />
+        <asp:FileUpload ID="coverPhotoUpload" runat="server" />
+&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="uploadButton" runat="server" Text="Upload" OnClick="uploadButton_Click" />
         <br />
-        <asp:Button ID="submitButton" runat="server" Text="Submit" />
+        <br />
+        <br />
+        <asp:Button ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="cancelButton" runat="server" OnClick="cancelButton_Click" Text="Cancel" />
         
