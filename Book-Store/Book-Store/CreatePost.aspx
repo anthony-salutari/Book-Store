@@ -7,7 +7,14 @@
     <title>New Listing</title>
 
     <style>
+        #links, #listing{
+            margin:auto;
+            width: 30%;
+        }
 
+        h1 {
+            text-align: center;
+        }
     </style>
 
 </head>
@@ -16,9 +23,8 @@
     <div id="links">
         <asp:HyperLink ID="homeLink" runat="server" NavigateUrl="default.aspx">Home</asp:HyperLink>
     </div>
-    <div>
         <h1>Create New Listing</h1>
-              
+    <div id="listing" runat="server">         
         <br />
         Listing title:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="titleBox" runat="server" Width="300px"></asp:TextBox>
