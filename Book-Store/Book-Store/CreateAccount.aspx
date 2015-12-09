@@ -5,20 +5,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Register</title>
+
+    <style>
+        #links, #createAccount {
+            margin:auto;
+            width: 30%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div id="links" runat="server">
         <asp:HyperLink ID="homeLink" runat="server" NavigateUrl="default.aspx">Home</asp:HyperLink>
+    </div>
         <h1>Register for account</h1>
 
+    <div id="createAccount" runat="server">
         <br />
         Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="nameBox" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="nameValidator" runat="server" ControlToValidate="nameBox" ErrorMessage="Please enter your name" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
         Email address:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="emailBox" runat="server" TextMode="Email"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="emailValidator" runat="server" ControlToValidate="emailBox" ErrorMessage="Please enter your email" ForeColor="Red"></asp:RequiredFieldValidator>
+        <br />
+        <br />
+        Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="passwordBox" runat="server" TextMode="Password"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="passwordValidator" runat="server" ControlToValidate="passwordBox" ErrorMessage="Please enter a password" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
         Profile picture:<br />

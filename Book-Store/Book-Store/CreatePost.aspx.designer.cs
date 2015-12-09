@@ -40,6 +40,15 @@ namespace Book_Store {
         protected global::System.Web.UI.WebControls.TextBox titleBox;
         
         /// <summary>
+        /// titleValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator titleValidator;
+        
+        /// <summary>
         /// bookNameBox control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace Book_Store {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox bookNameBox;
+        
+        /// <summary>
+        /// bookNameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator bookNameValidator;
         
         /// <summary>
         /// conditionList control.
@@ -58,6 +76,15 @@ namespace Book_Store {
         protected global::System.Web.UI.WebControls.DropDownList conditionList;
         
         /// <summary>
+        /// conditionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator conditionValidator;
+        
+        /// <summary>
         /// priceBox control.
         /// </summary>
         /// <remarks>
@@ -65,6 +92,15 @@ namespace Book_Store {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox priceBox;
+        
+        /// <summary>
+        /// priceValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator priceValidator;
         
         /// <summary>
         /// descriptionBox control.

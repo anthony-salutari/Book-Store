@@ -5,22 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>New Listing</title>
+
+    <style>
+
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div id="links">
         <asp:HyperLink ID="homeLink" runat="server" NavigateUrl="default.aspx">Home</asp:HyperLink>
-
+    </div>
+    <div>
         <h1>Create New Listing</h1>
-        
-        
+              
         <br />
         Listing title:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="titleBox" runat="server" Width="300px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="titleValidator" runat="server" ControlToValidate="titleBox" ErrorMessage="Please enter a title" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
         Book name:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="bookNameBox" runat="server" Width="300px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="bookNameValidator" runat="server" ControlToValidate="bookNameBox" ErrorMessage="Please enter the book name" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
         Condition:&nbsp;&nbsp;&nbsp;
@@ -31,9 +40,13 @@
             <asp:ListItem>Good</asp:ListItem>
             <asp:ListItem>Poor</asp:ListItem>
         </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="conditionValidator" runat="server" ControlToValidate="conditionList" ErrorMessage="Please enter the book's condition" ForeColor="Red" InitialValue="0"></asp:RequiredFieldValidator>
         <br />
         <br />
         Price:&nbsp;&nbsp;&nbsp; <asp:TextBox ID="priceBox" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="priceValidator" runat="server" ControlToValidate="priceBox" ErrorMessage="Please enter the price" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
         Description:<br />

@@ -5,6 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Book Store</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -12,7 +19,7 @@
         <h1>Book Store</h1>
     </div>
 
-    <div id="header">
+    <div id="links">
         <asp:HyperLink ID="loginLink" runat="server" NavigateUrl="Login.aspx">Login</asp:HyperLink>
 
     &nbsp;&nbsp;&nbsp;

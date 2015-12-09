@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,8 +11,11 @@ namespace Book_Store
 {
     public partial class CreatePost : System.Web.UI.Page
     {
+        private SqlConnection connection;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             coverPhoto.ImageUrl = "Assets/placeholder.jpg";
         }
 
@@ -33,6 +38,18 @@ namespace Book_Store
             //listing.coverImage = bookImage.ImageUrl;
             listing.description = descriptionBox.Text;
             listing.date = DateTime.Now;
+
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
+
+            // insert into the listing table
+            SqlCommand command = new SqlCommand("INSERT INTO Listings VALUES (" + listing.title + "," +
+                listing.bookName + "," +
+                listing.coverImage + "," +
+                listing.condition + "," +
+                listing.price + "," +
+                listing.description + "," +
+                listing.date + ","
+                /* + user.email + ","*/);
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)

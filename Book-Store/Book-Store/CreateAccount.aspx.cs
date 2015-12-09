@@ -30,5 +30,10 @@ namespace Book_Store
                 profileImage.ImageUrl = "Images/" + photoUpload.PostedFile.FileName;
             }
         }
+
+        protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
+        {
+
+        }
     }
 }
