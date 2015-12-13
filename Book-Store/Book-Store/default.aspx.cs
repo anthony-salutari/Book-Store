@@ -22,11 +22,11 @@ namespace Book_Store
 
             connection.Open();
 
-            SqlDataReader rdr = command.ExecuteReader(CommandBehavior.CloseConnection);
+            //SqlDataReader rdr = command.ExecuteReader(CommandBehavior.CloseConnection);
 
-            rdr.Read();
+            //rdr.Read();
 
-            testBox.Text = rdr[0].ToString();
+            //testBox.Text = rdr[0].ToString();
         }
     }
 }

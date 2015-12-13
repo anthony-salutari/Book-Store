@@ -31,9 +31,6 @@
         
         <asp:TextBox ID="searchBox" runat="server" Width="189px">Search for a book</asp:TextBox>
         
-    &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="searchButton" runat="server" Text="Search" />
-        
     </div>
         <br />
     <div id="filter" runat="server">

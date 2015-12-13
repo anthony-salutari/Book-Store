@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="conestoga-book-store" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="databaseConnection-Web.config Connection String" description="databaseConnection Connection String used in web.config by the application to access the database." value="Data Source=ANTHONY-PC;Initial Catalog=bookstore;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseConnection']/@connectionString" />
+  </parameter>
+</parameters>

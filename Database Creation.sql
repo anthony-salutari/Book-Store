@@ -2,7 +2,8 @@ CREATE TABLE Users
 (
 	EmailAddress VARCHAR(320) NOT NULL PRIMARY KEY,
 	Name VARCHAR(50) NOT NULL,
-	ProfilePicture Image NOT NULL
+	PictureURL VARCHAR(255) NOT NULL
+	PasswordHash VARCHAR(300) NOT NULL
 )
 
 CREATE TABLE Listings 
@@ -10,7 +11,7 @@ CREATE TABLE Listings
 	ListingID int IDENTITY(1,1) PRIMARY KEY,
 	Title VARCHAR(255) NOT NULL,
 	BookName VARCHAR(255) NOT NULL,
-	CoverImage Image NOT NULL,
+	CoverImageURL VARCHAR(255) NOT NULL,
 	Condition VARCHAR(50) NOT NULL,
 	Price VARCHAR(50) NOT NULL,
 	ListingDescription VARCHAR(1000),
