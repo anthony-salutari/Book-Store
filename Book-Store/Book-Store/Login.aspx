@@ -42,7 +42,7 @@
             <asp:RequiredFieldValidator ID="passwordValidator" runat="server" ControlToValidate="passwordBox" ErrorMessage="Please enter your password" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
-        <asp:Button ID="loginButton" runat="server" Text="Login" />
+        <asp:Button ID="loginButton" runat="server" Text="Login" OnClick="loginButton_Click" />
         <br />
         <br />
         <asp:HyperLink ID="registerLink" runat="server" NavigateUrl="CreateAccount.aspx">Click here to register</asp:HyperLink>
