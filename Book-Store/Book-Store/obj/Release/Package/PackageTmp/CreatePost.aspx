@@ -17,6 +17,20 @@
         }
     </style>
 
+    <script type="text/javascript">
+        function isDecimal(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var parts = evt.srcElement.value.split('.');
+            if (parts.length > 1 && charCode == 46)
+                return false;
+            else {
+                if (charCode == 46 || (charCode >= 48 && charCode <= 57))
+                    return true;
+                return false;
+            }
+        }
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -50,7 +64,7 @@
         <asp:RequiredFieldValidator ID="conditionValidator" runat="server" ControlToValidate="conditionList" ErrorMessage="Please enter the book's condition" ForeColor="Red" InitialValue="0"></asp:RequiredFieldValidator>
         <br />
         <br />
-        Price:&nbsp;&nbsp;&nbsp; <asp:TextBox ID="priceBox" runat="server"></asp:TextBox>
+        Price:&nbsp;&nbsp;&nbsp; <asp:TextBox ID="priceBox" runat="server" onkeypress="return isDecimal(event);"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;
         <asp:RequiredFieldValidator ID="priceValidator" runat="server" ControlToValidate="priceBox" ErrorMessage="Please enter the price" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />

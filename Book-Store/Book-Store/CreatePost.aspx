@@ -76,14 +76,14 @@
         <br />
         <br />
         Cover photo:<br />
-        <br />
+        &nbsp;&nbsp;&nbsp; *Must be less than 4 MB<br />
         &nbsp;&nbsp;&nbsp;
         <asp:Image ID="coverPhoto" runat="server" Height="200px" Width="200px" />
         <br />
         <br />
         <asp:FileUpload ID="coverPhotoUpload" runat="server" />
 &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="uploadButton" runat="server" Text="Upload" OnClick="uploadButton_Click" />
+        <asp:Button ID="uploadButton" runat="server" Text="Upload" OnClick="uploadButton_Click" CausesValidation="False" UseSubmitBehavior="False" />
         <br />
         <br />
         <br />

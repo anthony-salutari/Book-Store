@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using System.Web.Helpers;
 using System.Data.SqlClient;
 using System.Configuration;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
 
 namespace Book_Store
 {
@@ -15,8 +17,20 @@ namespace Book_Store
     {
         private SqlConnection connection;
 
+        // blob storage for images
+        private string imageRootPath;
+        private string containerName;
+        private string blobStorageConnectionString;
+        private CloudBlobClient blobClient;
+        private CloudBlobContainer blobContainer;
+        private CloudBlockBlob blockBlob;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            imageRootPath = ConfigurationManager.AppSettings["ImageRootPath"];
+            containerName = ConfigurationManager.AppSettings["ImagesContainer"];
+            blobStorageConnectionString = ConfigurationManager.ConnectionStrings["BlobStorageConnectionString"].ConnectionString;
+
             profileImage.ImageUrl = "Assets/defaultprofile.png";
         }
 
@@ -29,10 +43,19 @@ namespace Book_Store
         {
             if (photoUpload.HasFile)
             {
-                string path = Server.MapPath("Images/" + photoUpload.PostedFile.FileName);
-                photoUpload.SaveAs(path);
+                string fileName = photoUpload.PostedFile.FileName + DateTime.Now;
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
+                blobClient = storageAccount.CreateCloudBlobClient();
+                blobContainer = blobClient.GetContainerReference(containerName);
 
-                profileImage.ImageUrl = "Images/" + photoUpload.PostedFile.FileName;
+                blockBlob = blobContainer.GetBlockBlobReference(fileName);
+
+                using (var fileStream = System.IO.File.OpenRead(photoUpload.PostedFile.FileName))
+                {
+                    blockBlob.UploadFromStream(fileStream);
+                }
+
+                profileImage.ImageUrl = blockBlob.Uri.ToString();
             }
         }
 
@@ -55,7 +78,8 @@ namespace Book_Store
                     emailBox.Text + "," +
                     nameBox.Text + "," +
                     profileImage.ImageUrl + "," +
-                    hashedPassword + ")";
+                    hashedPassword + "," +
+                    "0)";
 
                 SqlCommand command = new SqlCommand(commandString, connection);
 

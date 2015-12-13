@@ -9,7 +9,7 @@
     <style>
         #links, #createAccount {
             margin:auto;
-            width: 30%;
+            width: 40%;
         }
 
         h1 {
@@ -57,7 +57,7 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="submitButton" runat="server" Text="Submit" />
+        <asp:Button ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="cancelButton" runat="server" Text="Cancel" OnClick="cancelButton_Click" />
 

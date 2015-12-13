@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="databaseConnection-Web.config Connection String" description="databaseConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=ANTHONY-PC;Initial Catalog=bookstore;Integrated Security=True" tags="SqlConnectionString">
+  <parameter name="databaseConnection-Web.config Connection String" description="databaseConnection Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:book-store.database.windows.net;Database=database;&#xD;&#xA;User ID=anthony@book-store;Password=Antony6834;Trusted_Connection=False;&#xD;&#xA;Encrypt=True;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseConnection']/@connectionString" />
   </parameter>
 </parameters>

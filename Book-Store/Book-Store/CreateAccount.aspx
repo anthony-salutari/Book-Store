@@ -46,6 +46,7 @@
         <br />
         <br />
         Profile picture:<br />
+&nbsp;&nbsp;&nbsp; *Must be less than 4 MB<br />
         <br />
         &nbsp;&nbsp;&nbsp;
         <asp:Image ID="profileImage" runat="server" Height="200px" Width="200px" />
@@ -53,7 +54,7 @@
         <br />
         <asp:FileUpload ID="photoUpload" runat="server" />
         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="uploadButton" runat="server" OnClick="uploadButton_Click" Text="Upload" />
+        <asp:Button ID="uploadButton" runat="server" OnClick="uploadButton_Click" Text="Upload" CausesValidation="False" UseSubmitBehavior="False" />
         <br />
         <br />
         <br />
