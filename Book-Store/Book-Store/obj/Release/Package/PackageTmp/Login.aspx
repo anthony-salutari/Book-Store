@@ -7,7 +7,7 @@
     <title>Login</title>
 
     <style>
-        #login, links {
+        #login, links, #loginError {
             margin: auto;
             width: 30%;
         }

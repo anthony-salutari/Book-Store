@@ -26,6 +26,9 @@
         <h1>Register for account</h1>
 
     <div id="createAccount" runat="server">
+
+        <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
+        <br />
         <br />
         Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="nameBox" runat="server"></asp:TextBox>
@@ -46,6 +49,7 @@
         <br />
         <br />
         Profile picture:<br />
+&nbsp;&nbsp;&nbsp; *Must be less than 4 MB<br />
         <br />
         &nbsp;&nbsp;&nbsp;
         <asp:Image ID="profileImage" runat="server" Height="200px" Width="200px" />
@@ -53,7 +57,7 @@
         <br />
         <asp:FileUpload ID="photoUpload" runat="server" />
         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="uploadButton" runat="server" OnClick="uploadButton_Click" Text="Upload" />
+        <asp:Button ID="uploadButton" runat="server" OnClick="uploadButton_Click" Text="Upload" CausesValidation="False" UseSubmitBehavior="False" />
         <br />
         <br />
         <br />

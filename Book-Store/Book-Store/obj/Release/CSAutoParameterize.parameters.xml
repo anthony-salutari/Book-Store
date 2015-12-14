@@ -3,4 +3,7 @@
   <parameter name="databaseConnection-Web.config Connection String" description="databaseConnection Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:book-store.database.windows.net;Database=database;&#xD;&#xA;User ID=anthony@book-store;Password=Antony6834;Trusted_Connection=False;&#xD;&#xA;Encrypt=True;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseConnection']/@connectionString" />
   </parameter>
+  <parameter name="BlobStorageConnectionString-Web.config Connection String" description="BlobStorageConnectionString Connection String used in web.config by the application to access the database." defaultValue="DefaultEndpointsProtocol=https;AccountName=bookstoreimages;AccountKey=iQN2GLXOGoCcLCiLeHHkLrbkWJDDqRhQ7eymrb2oFqKi0gsvsNU9Q3TYCMK5zsKrbWeogVWtx/p8q8J08/OS8w==" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BlobStorageConnectionString']/@connectionString" />
+  </parameter>
 </parameters>

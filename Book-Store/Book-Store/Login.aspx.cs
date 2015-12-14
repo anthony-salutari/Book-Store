@@ -22,17 +22,54 @@ namespace Book_Store
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
-            string checkLoginString = "SELECT Users.PasswordHash WHERE Users.Email = " + emailBox.Text;
+            bool correctPassword;
 
-            // check if password is correct
-            SqlCommand checkLogin = new SqlCommand(checkLoginString, connection);
-            connection.Open();
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
+                //string checkEmailString = "SELECT * FROM Users WHERE EmailAddress='" + emailBox.Text + "'";
+                string checkEmailString = String.Format("SELECT count(*) FROM Users WHERE EmailAddress='{0}'", emailBox.Text);
+                //string checkLoginString = "SELECT PasswordHash FROM Users WHERE EmailAddress='" + emailBox.Text + "'";
+                string checkLoginString = String.Format("SELECT PasswordHash FROM Users WHERE EmailAddress='{0}'", emailBox.Text);
+                // check if email exists
+                SqlCommand checkEmail = new SqlCommand(checkEmailString, connection);
+                connection.Open();
 
-            SqlDataReader reader = checkLogin.ExecuteReader(CommandBehavior.CloseConnection);
-            reader.Read();
+                int email = (int)checkEmail.ExecuteScalar();
 
-            // if correct set some session variables
+                connection.Close();
+
+                if (email == 1)
+                {
+                    // check if password is correct
+                    SqlCommand checkLogin = new SqlCommand(checkLoginString, connection);
+                    connection.Open();
+
+                    SqlDataReader reader = checkLogin.ExecuteReader(CommandBehavior.CloseConnection);
+                    reader.Read();
+
+                    correctPassword = Crypto.VerifyHashedPassword(reader[0].ToString(), passwordBox.Text);
+
+                    if (correctPassword)
+                    {
+                        //correct set some session variables
+                    }
+                    else
+                    {
+                        // inform user the username or password is incorrect
+                        loginError.Visible = true;
+                    }
+                }
+                else
+                {
+                    // email doesn't exist show the login error
+                    loginError.Visible = true;
+                }
+            } 
+            catch (Exception ex)
+            {
+                errorLabel.Text = ex.Message;
+            }
         }
     }
 }

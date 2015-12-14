@@ -25,22 +25,29 @@ namespace Book_Store
         private CloudBlobClient blobClient;
         private CloudBlobContainer blobContainer;
         private CloudBlockBlob blockBlob;
+        private CloudStorageAccount storageAccount;
+
+        private const string defaultImage = "assets/placeholder.jpg";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // set up the cloud storage
             imageRootPath = ConfigurationManager.AppSettings["ImageRootPath"];
             containerName = ConfigurationManager.AppSettings["ImagesContainer"];
             blobStorageConnectionString = ConfigurationManager.ConnectionStrings["BlobStorageConnectionString"].ConnectionString;
+            storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
+            blobClient = storageAccount.CreateCloudBlobClient();
+            blobContainer = blobClient.GetContainerReference(containerName);
 
-            coverPhoto.ImageUrl = "Assets/placeholder.jpg";
+            CloudBlockBlob defaultImageBlob = blobContainer.GetBlockBlobReference(defaultImage);
+
+            // set the default image
+            coverPhoto.ImageUrl = defaultImageBlob.Uri.ToString();
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-            "Error",
-            "alert('Are you sure you want to cancel this post?');",
-            true);        
+                  
         }
 
         protected void submitButton_Click(object sender, EventArgs e)
@@ -72,14 +79,12 @@ namespace Book_Store
         {
             if (coverPhotoUpload.HasFile)
             {
-                string fileName = coverPhotoUpload.PostedFile.FileName + DateTime.Now.ToString();
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
-                blobClient = storageAccount.CreateCloudBlobClient();
-                blobContainer = blobClient.GetContainerReference(containerName);
+                string fullFileName = coverPhotoUpload.PostedFile.FileName;
+                string shortFileName = Path.GetFileName(fullFileName);
 
-                blockBlob = blobContainer.GetBlockBlobReference(fileName);
+                blockBlob = blobContainer.GetBlockBlobReference(shortFileName + DateTime.Now);
 
-                using (var fileStream = System.IO.File.OpenRead(coverPhotoUpload.PostedFile.FileName))
+                using (var fileStream = System.IO.File.OpenRead(fullFileName))
                 {
                     blockBlob.UploadFromStream(fileStream);
                 }

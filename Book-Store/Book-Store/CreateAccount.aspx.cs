@@ -24,14 +24,26 @@ namespace Book_Store
         private CloudBlobClient blobClient;
         private CloudBlobContainer blobContainer;
         private CloudBlockBlob blockBlob;
+        private CloudStorageAccount storageAccount;
+
+        private const string defaultProfileImage = "assets/defaultprofile.png";
+        private const string emailDomain = "@conestogac.on.ca";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // set up a lot of cloud storage parameters/settings
             imageRootPath = ConfigurationManager.AppSettings["ImageRootPath"];
             containerName = ConfigurationManager.AppSettings["ImagesContainer"];
             blobStorageConnectionString = ConfigurationManager.ConnectionStrings["BlobStorageConnectionString"].ConnectionString;
+            storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
+            blobClient = storageAccount.CreateCloudBlobClient();
+            blobContainer = blobClient.GetContainerReference(containerName);
 
-            profileImage.ImageUrl = "Assets/defaultprofile.png";
+            // pull the default image from the image store
+            CloudBlockBlob defaultImage = blobContainer.GetBlockBlobReference(defaultProfileImage);
+            
+            // set the default image
+            profileImage.ImageUrl = defaultImage.Uri.ToString();
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)
@@ -43,14 +55,12 @@ namespace Book_Store
         {
             if (photoUpload.HasFile)
             {
-                string fileName = photoUpload.PostedFile.FileName + DateTime.Now;
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
-                blobClient = storageAccount.CreateCloudBlobClient();
-                blobContainer = blobClient.GetContainerReference(containerName);
+                string fullFileName = photoUpload.PostedFile.FileName;
+                string shortFileName = Path.GetFileName(fullFileName);
 
-                blockBlob = blobContainer.GetBlockBlobReference(fileName);
+                blockBlob = blobContainer.GetBlockBlobReference(shortFileName + DateTime.Now);
 
-                using (var fileStream = System.IO.File.OpenRead(photoUpload.PostedFile.FileName))
+                using (var fileStream = System.IO.File.OpenRead(fullFileName))
                 {
                     blockBlob.UploadFromStream(fileStream);
                 }
@@ -62,23 +72,31 @@ namespace Book_Store
         protected void submitButton_Click(object sender, EventArgs e)
         {
             string password = passwordBox.Text;
-            string salt;
+            string email = emailBox.Text;
+            string domainCheck;
             string hashedPassword;
 
             try
             {
+                // validate that the email is only @conestogac.on.ca
+                domainCheck = email.Substring(email.Length - 17, 17);
+
+                if (domainCheck != emailDomain)
+                {
+                    throw new Exception("Email domain must only be @conestogac.on.ca");
+                }
+
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
 
-                // hash the password with some salt
-                salt = Crypto.GenerateSalt();
-                hashedPassword = Crypto.HashPassword(salt + password);
+                // hash the password
+                hashedPassword = Crypto.HashPassword(password);
 
                 // construct the SQL query
-                string commandString = "INSERT INTO Users VALUES(" +
-                    emailBox.Text + "," +
-                    nameBox.Text + "," +
-                    profileImage.ImageUrl + "," +
-                    hashedPassword + "," +
+                string commandString = @"INSERT INTO Users VALUES('" +
+                    emailBox.Text + "', '" +
+                    nameBox.Text + "', '" +
+                    profileImage.ImageUrl + "', '" +
+                    hashedPassword + "', " +
                     "0)";
 
                 SqlCommand command = new SqlCommand(commandString, connection);
@@ -90,6 +108,7 @@ namespace Book_Store
             catch (Exception ex)
             {
                 // display exception
+                errorLabel.Text = ex.Message;
             }
         }
     }
