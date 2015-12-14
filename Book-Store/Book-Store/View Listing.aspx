@@ -17,6 +17,10 @@
         <asp:Label ID="titleLabel" runat="server" Text="Listing Title" Font-Size="XX-Large"></asp:Label>
         
         <br />
+        
+        <br />
+        <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
+        <br />
         <br />
         Book name:
         <asp:Label ID="bookNameLabel" runat="server" Text="Book Name"></asp:Label>

@@ -61,39 +61,54 @@ namespace Book_Store
 
         protected void submitButton_Click(object sender, EventArgs e)
         {
-            Listing listing = new Listing();
+            // check if user is still logged in
+            if (Session["LoggedIn"] != null)
+            {
+                try
+                {
+                    Listing listing = new Listing();
 
-            listing.title = titleBox.Text;
-            listing.bookName = bookNameBox.Text;
-            listing.condition = conditionList.SelectedValue;
-            listing.price = priceBox.Text;
-            listing.coverImageURL = coverPhoto.ImageUrl;
-            listing.description = descriptionBox.Text;
-            listing.date = DateTime.Now;
+                    listing.title = titleBox.Text;
+                    listing.bookName = bookNameBox.Text;
+                    listing.condition = conditionList.SelectedValue;
+                    listing.price = priceBox.Text;
+                    listing.coverImageURL = coverPhoto.ImageUrl;
+                    listing.description = descriptionBox.Text;
+                    listing.date = DateTime.Now;
 
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
+                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
 
-            // insert into the listing table
-            //SqlCommand command = new SqlCommand("INSERT INTO Listings VALUES (" + listing.title + "," +
-            //    listing.bookName + "," +
-            //    listing.coverImageURL + "," +
-            //    listing.condition + "," +
-            //    listing.price + "," +
-            //    listing.description + "," +
-            //    listing.date + ","
-            //    /* + user.email + ","*/);
+                    string postString = string.Format("INSERT INTO Listings VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')",
+                        listing.title,
+                        listing.bookName,
+                        listing.coverImageURL,
+                        listing.condition,
+                        listing.price,
+                        listing.description,
+                        listing.date,
+                        Session["EmailAddress"].ToString());
 
-            string postString = string.Format("INSERT INTO Listings VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')",
-                listing.title,
-                listing.bookName,
-                listing.coverImageURL,
-                listing.condition,
-                listing.price,
-                listing.description,
-                listing.date,
-                Session["EmailAddress"].ToString());
+                    SqlCommand command = new SqlCommand(postString, connection);
+                    connection.Open();
 
-            SqlCommand command = new SqlCommand();
+                    int confirmation = command.ExecuteNonQuery();
+
+                    if (confirmation != 1)
+                    {
+                        // failed to add new listing
+                        throw new Exception("Failed to add new listing");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errorLabel.Text = ex.Message;
+                }
+            }
+            else
+            {
+                // user isn't logged in anymore redirect to login page
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)

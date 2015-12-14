@@ -29,7 +29,7 @@ namespace Book_Store
                 }
                 catch (Exception ex)
                 {
-                    // handle exception
+                    errorLabel.Text = ex.Message;
                 }
             }
             else
@@ -41,7 +41,7 @@ namespace Book_Store
 
         protected void searchButton_Click(object sender, EventArgs e)
         {
-            string searchString = String.Format("SELECT * FROM Listings WHERE Title LIKE '{0}' OR BookName LIKE '{0}'", searchBox.Text);
+            string searchString = String.Format("SELECT * FROM Listings WHERE Title LIKE '%{0}%' OR BookName LIKE '%{0}%'", searchBox.Text);
 
             try
             {

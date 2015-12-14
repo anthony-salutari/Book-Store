@@ -39,6 +39,8 @@
     </div>
         <h1>Create New Listing</h1>
     <div id="listing" runat="server">         
+        <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
+        <br />
         <br />
         Listing title:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="titleBox" runat="server" Width="300px"></asp:TextBox>
