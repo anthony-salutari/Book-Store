@@ -19,11 +19,21 @@
         <h1>Book Store</h1>
     </div>
 
-    <div id="links">
+    <div id="links" runat="server">
         <asp:HyperLink ID="loginLink" runat="server" NavigateUrl="Login.aspx">Login</asp:HyperLink>
-
-    &nbsp;&nbsp;&nbsp;
-        <asp:HyperLink ID="createAccountLink" runat="server" NavigateUrl="CreatePost.aspx">Create New Listing</asp:HyperLink>
+        <br />
+    </div>
+    <div id="userBox" runat="server">
+        <asp:ImageButton ID="userImage" runat="server" Height="50px" Width="50px" />
+&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="userNameLabel" runat="server"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+        <asp:HyperLink ID="createNewListingLink" runat="server" NavigateUrl="CreatePost.aspx">Create New Listing</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+        <asp:HyperLink ID="editPostsLink" runat="server">View/Edit your listings</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="logoutLink" runat="server" OnClick="logoutLink_Click">Logout</asp:LinkButton>
+        <br />
 
     </div>
         <br />
@@ -32,7 +42,7 @@
         <asp:TextBox ID="searchBox" runat="server" Width="189px">Search for a book</asp:TextBox>
         
     &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="searchButton" runat="server" Text="Search" />
+        <asp:Button ID="searchButton" runat="server" Text="Search" OnClick="searchButton_Click" />
         
     </div>
         <br />
@@ -59,7 +69,8 @@
 
     <div id="listings" runat="server">
 
-        <asp:TextBox ID="testBox" runat="server" Width="436px"></asp:TextBox>
+        <br />
+        <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
 
     </div>
 

@@ -16,17 +16,64 @@ namespace Book_Store
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
+            // check if user is logged in
+            if (Session["LoggedIn"] != null)
+            {
+                userBox.Attributes.Add("style", "display:inline");
+                links.Attributes.Add("style", "display:none");
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Users", connection);
+                try
+                {
+                    userImage.ImageUrl = Session["Photo"].ToString();
+                    userNameLabel.Text = Session["UserName"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    // handle exception
+                }
+            }
+            else
+            {
+                userBox.Attributes.Add("style", "display:none");
+                links.Attributes.Add("style", "display:inline");
+            }
+        }
 
-            connection.Open();
+        protected void searchButton_Click(object sender, EventArgs e)
+        {
+            string searchString = String.Format("SELECT * FROM Listings WHERE Title LIKE '{0}' OR BookName LIKE '{0}'", searchBox.Text);
 
-            //SqlDataReader rdr = command.ExecuteReader(CommandBehavior.CloseConnection);
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ConnectionString);
+                SqlCommand command = new SqlCommand(searchString, connection);
+                connection.Open();
 
-            //rdr.Read();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                reader.Read();
+                
+                if (reader.HasRows)
+                {
+                    // search returned results
+                }
+                else
+                {
+                    // no results inform user
+                    throw new Exception("No results found");
+                }
+            }
+            catch (Exception ex)
+            {
+                errorLabel.Text = ex.Message;
+            }
+        }
 
-            //testBox.Text = rdr[0].ToString();
+        protected void logoutLink_Click(object sender, EventArgs e)
+        {
+            // user wants to log out, clear session variables and post back to default
+            Session.Abandon();
+            Session.Clear();
+            Response.Redirect("default.aspx");
         }
     }
 }

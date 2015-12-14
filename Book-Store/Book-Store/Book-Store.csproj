@@ -86,6 +86,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EditPosts.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\conestoga-book-store.pubxml" />
     <None Include="Web.Debug.config">
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="EditAccount.aspx.designer.cs">
       <DependentUpon>EditAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditPosts.aspx.cs">
+      <DependentUpon>EditPosts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditPosts.aspx.designer.cs">
+      <DependentUpon>EditPosts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Listing.cs" />
     <Compile Include="Login.aspx.cs">

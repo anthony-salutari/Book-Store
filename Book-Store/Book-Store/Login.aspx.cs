@@ -27,10 +27,10 @@ namespace Book_Store
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
-                //string checkEmailString = "SELECT * FROM Users WHERE EmailAddress='" + emailBox.Text + "'";
                 string checkEmailString = String.Format("SELECT count(*) FROM Users WHERE EmailAddress='{0}'", emailBox.Text);
-                //string checkLoginString = "SELECT PasswordHash FROM Users WHERE EmailAddress='" + emailBox.Text + "'";
                 string checkLoginString = String.Format("SELECT PasswordHash FROM Users WHERE EmailAddress='{0}'", emailBox.Text);
+                string getUserString = String.Format("SELECT EmailAddress, Name, PictureURL, UserType FROM uSERS WHERE EmailAddress='{0}'", emailBox.Text);
+
                 // check if email exists
                 SqlCommand checkEmail = new SqlCommand(checkEmailString, connection);
                 connection.Open();
@@ -50,9 +50,27 @@ namespace Book_Store
 
                     correctPassword = Crypto.VerifyHashedPassword(reader[0].ToString(), passwordBox.Text);
 
+                    connection.Close();
+
                     if (correctPassword)
                     {
+                        SqlCommand getUser = new SqlCommand(getUserString, connection);
+                        connection.Open();
+
+                        SqlDataReader userReader = getUser.ExecuteReader(CommandBehavior.CloseConnection);
+                        userReader.Read();
+
                         //correct set some session variables
+                        Session["EmailAddress"] = userReader["EmailAddress"].ToString();
+                        Session["UserName"] = userReader["Name"].ToString();
+                        Session["Photo"] = userReader["PictureURL"].ToString();
+                        Session["UserType"] = userReader["UserType"].ToString();
+                        Session["LoggedIn"] = true;
+
+                        connection.Close();
+
+                        // send user back to home page
+                        Server.Transfer("default.aspx", false);                       
                     }
                     else
                     {

@@ -31,18 +31,27 @@ namespace Book_Store
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // set up the cloud storage
-            imageRootPath = ConfigurationManager.AppSettings["ImageRootPath"];
-            containerName = ConfigurationManager.AppSettings["ImagesContainer"];
-            blobStorageConnectionString = ConfigurationManager.ConnectionStrings["BlobStorageConnectionString"].ConnectionString;
-            storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
-            blobClient = storageAccount.CreateCloudBlobClient();
-            blobContainer = blobClient.GetContainerReference(containerName);
+            // check if user is logged in
+            if (Session["LoggedIn"] != null)
+            {
+                // set up the cloud storage
+                imageRootPath = ConfigurationManager.AppSettings["ImageRootPath"];
+                containerName = ConfigurationManager.AppSettings["ImagesContainer"];
+                blobStorageConnectionString = ConfigurationManager.ConnectionStrings["BlobStorageConnectionString"].ConnectionString;
+                storageAccount = CloudStorageAccount.Parse(blobStorageConnectionString);
+                blobClient = storageAccount.CreateCloudBlobClient();
+                blobContainer = blobClient.GetContainerReference(containerName);
 
-            CloudBlockBlob defaultImageBlob = blobContainer.GetBlockBlobReference(defaultImage);
+                CloudBlockBlob defaultImageBlob = blobContainer.GetBlockBlobReference(defaultImage);
 
-            // set the default image
-            coverPhoto.ImageUrl = defaultImageBlob.Uri.ToString();
+                // set the default image
+                coverPhoto.ImageUrl = defaultImageBlob.Uri.ToString();
+            }
+            else
+            {
+                // user can't post, send them to login page
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)
@@ -65,14 +74,26 @@ namespace Book_Store
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ToString());
 
             // insert into the listing table
-            SqlCommand command = new SqlCommand("INSERT INTO Listings VALUES (" + listing.title + "," +
-                listing.bookName + "," +
-                listing.coverImageURL + "," +
-                listing.condition + "," +
-                listing.price + "," +
-                listing.description + "," +
-                listing.date + ","
-                /* + user.email + ","*/);
+            //SqlCommand command = new SqlCommand("INSERT INTO Listings VALUES (" + listing.title + "," +
+            //    listing.bookName + "," +
+            //    listing.coverImageURL + "," +
+            //    listing.condition + "," +
+            //    listing.price + "," +
+            //    listing.description + "," +
+            //    listing.date + ","
+            //    /* + user.email + ","*/);
+
+            string postString = string.Format("INSERT INTO Listings VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')",
+                listing.title,
+                listing.bookName,
+                listing.coverImageURL,
+                listing.condition,
+                listing.price,
+                listing.description,
+                listing.date,
+                Session["EmailAddress"].ToString());
+
+            SqlCommand command = new SqlCommand();
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)

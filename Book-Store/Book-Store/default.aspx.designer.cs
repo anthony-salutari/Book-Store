@@ -22,6 +22,15 @@ namespace Book_Store {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// links control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl links;
+        
+        /// <summary>
         /// loginLink control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,58 @@ namespace Book_Store {
         protected global::System.Web.UI.WebControls.HyperLink loginLink;
         
         /// <summary>
-        /// createAccountLink control.
+        /// userBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink createAccountLink;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userBox;
+        
+        /// <summary>
+        /// userImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton userImage;
+        
+        /// <summary>
+        /// userNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label userNameLabel;
+        
+        /// <summary>
+        /// createNewListingLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink createNewListingLink;
+        
+        /// <summary>
+        /// editPostsLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink editPostsLink;
+        
+        /// <summary>
+        /// logoutLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton logoutLink;
         
         /// <summary>
         /// search control.
@@ -112,12 +166,12 @@ namespace Book_Store {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl listings;
         
         /// <summary>
-        /// testBox control.
+        /// errorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox testBox;
+        protected global::System.Web.UI.WebControls.Label errorLabel;
     }
 }

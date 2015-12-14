@@ -43,7 +43,10 @@ namespace Book_Store
             CloudBlockBlob defaultImage = blobContainer.GetBlockBlobReference(defaultProfileImage);
             
             // set the default image
-            profileImage.ImageUrl = defaultImage.Uri.ToString();
+            if (!IsPostBack)
+            {
+                profileImage.ImageUrl = defaultImage.Uri.ToString();
+            }
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)
@@ -91,19 +94,25 @@ namespace Book_Store
                 // hash the password
                 hashedPassword = Crypto.HashPassword(password);
 
-                // construct the SQL query
-                string commandString = @"INSERT INTO Users VALUES('" +
-                    emailBox.Text + "', '" +
-                    nameBox.Text + "', '" +
-                    profileImage.ImageUrl + "', '" +
-                    hashedPassword + "', " +
-                    "0)";
+                string commandString = string.Format("INSERT INTO Users VALUES('{0}', '{1}', '{2}', '{3}', 0)", emailBox.Text,
+                    nameBox.Text,
+                    profileImage.ImageUrl,
+                    hashedPassword);
 
                 SqlCommand command = new SqlCommand(commandString, connection);
 
                 connection.Open();
 
                 command.ExecuteNonQuery();
+
+                // user created set some session variables and go to default
+                Session["EmailAddress"] = emailBox.Text;
+                Session["UserName"] = nameBox.Text;
+                Session["Photo"] = profileImage.ImageUrl;
+                Session["UserType"] = 0;
+                Session["LoggedIn"] = true;
+
+                Server.Transfer("default.aspx", false);
             }
             catch (Exception ex)
             {
