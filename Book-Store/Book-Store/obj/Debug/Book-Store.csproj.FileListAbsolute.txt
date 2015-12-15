@@ -56,4 +56,3 @@ C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\zh-Hans\System.S
 C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\System.Web.Helpers.dll
 C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\bin\System.Web.Helpers.xml
-C:\Users\Anthony\Documents\Book-Store\Book-Store\Book-Store\obj\Debug\Book-Store.csprojResolveAssemblyReference.cache
