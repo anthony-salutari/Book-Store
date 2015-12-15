@@ -37,7 +37,7 @@
 &nbsp;&nbsp;&nbsp;
         <asp:HyperLink ID="createNewListingLink" runat="server" NavigateUrl="CreatePost.aspx">Create New Listing</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
-        <asp:HyperLink ID="editPostsLink" runat="server">View/Edit your listings</asp:HyperLink>
+        <asp:HyperLink ID="editPostsLink" runat="server" NavigateUrl="ViewUserListings.aspx">View/Edit your listings</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
         <asp:LinkButton ID="logoutLink" runat="server" OnClick="logoutLink_Click">Logout</asp:LinkButton>
         <br />

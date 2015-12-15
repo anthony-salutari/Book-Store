@@ -13,6 +13,10 @@
         .auto-style1 {
             width: 100%;
         }
+        #listings {
+            margin:auto;
+            width: 60%;
+        }
         </style>
 
 </head>
@@ -50,24 +54,6 @@
     </div>
         <br />
     <div id="filter" runat="server">
-        Filter: 
-        <asp:DropDownList ID="filterTimeList" runat="server">
-            <asp:ListItem Selected="True">Filter by date</asp:ListItem>
-            <asp:ListItem>Newest to oldest</asp:ListItem>
-            <asp:ListItem>Oldest to newest</asp:ListItem>
-        </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="filterPriceList" runat="server">
-            <asp:ListItem Selected="True">Filter by price</asp:ListItem>
-            <asp:ListItem>Lowest to highest</asp:ListItem>
-            <asp:ListItem>Highest to lowest</asp:ListItem>
-        </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem>Filter by name</asp:ListItem>
-            <asp:ListItem>A to Z</asp:ListItem>
-            <asp:ListItem>Z - A</asp:ListItem>
-        </asp:DropDownList>
     </div>
 
     <div id="listings" runat="server">
@@ -76,27 +62,21 @@
         <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
 
         <br />
-        <br />
-        <br />
         <table class="auto-style1">
             <tr>
                 <td>
-                    <br />
                     <asp:ListView ID="ListView1" runat="server" DataKeyNames="ListingID" DataSourceID="SqlDataSource1" GroupItemCount="3">
                         <AlternatingItemTemplate>
                             <td runat="server" style="background-color:#FFF8DC;">
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "ViewListing.aspx?ListingID=" + Eval("ListingID") %>' Text='<%# Eval("Title") %>'></asp:HyperLink>
                                 <br />
-                                BookName:
+                                Book Name:
                                 <asp:Label ID="BookNameLabel" runat="server" Text='<%# Eval("BookName") %>' />
-                                <br />
-                                ListingID:
-                                <asp:Label ID="ListingIDLabel" runat="server" Text='<%# Eval("ListingID") %>' />
                                 <br />&nbsp;<asp:Image ID="coverImage" runat="server" Height="100px" ImageUrl='<%# Eval("CoverImageURL") %>' Width="100px" />
                                 <br />
                                 Price:
                                 <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
-                                <br />PostingDate:
+                                <br />Date:
                                 <asp:Label ID="PostingDateLabel" runat="server" Text='<%# Eval("PostingDate") %>' />
                                 <br /></td>
                         </AlternatingItemTemplate>
@@ -157,16 +137,13 @@
                             <td runat="server" style="background-color:#DCDCDC;color: #000000;">
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "ViewListing.aspx?ListingID=" + Eval("ListingID") %>' Text='<%# Eval("Title") %>'></asp:HyperLink>
                                 <br />
-                                BookName:
+                                Book Name:
                                 <asp:Label ID="BookNameLabel" runat="server" Text='<%# Eval("BookName") %>' />
-                                <br />
-                                ListingID:
-                                <asp:Label ID="ListingIDLabel" runat="server" Text='<%# Eval("ListingID") %>' />
                                 <br />&nbsp;<asp:Image ID="coverImage" runat="server" Height="100px" ImageUrl='<%# Eval("CoverImageURL") %>' Width="100px" />
                                 <br />
                                 Price:
                                 <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
-                                <br />PostingDate:
+                                <br />Date:
                                 <asp:Label ID="PostingDateLabel" runat="server" Text='<%# Eval("PostingDate") %>' />
                                 <br /></td>
                         </ItemTemplate>
@@ -208,7 +185,7 @@
                                 <br /></td>
                         </SelectedItemTemplate>
                     </asp:ListView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:databaseConnectionString %>" SelectCommand="SELECT [BookName], [ListingID], [Title], [CoverImageURL], [Price], [PostingDate] FROM [Listings]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:databaseConnectionString %>" SelectCommand="SELECT [BookName], [ListingID], [Title], [CoverImageURL], [Price], [PostingDate] FROM [Listings] ORDER BY [PostingDate] DESC"></asp:SqlDataSource>
                     <br />
                 </td>
             </tr>

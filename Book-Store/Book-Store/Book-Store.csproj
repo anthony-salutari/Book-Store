@@ -86,7 +86,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EditPosts.aspx" />
+    <Content Include="EditListing.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\conestoga-book-store.pubxml" />
     <None Include="Web.Debug.config">
@@ -103,6 +103,7 @@
     <Content Include="EditAccount.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="ViewListing.aspx" />
+    <Content Include="ViewUserListings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -134,12 +135,12 @@
     <Compile Include="EditAccount.aspx.designer.cs">
       <DependentUpon>EditAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditPosts.aspx.cs">
-      <DependentUpon>EditPosts.aspx</DependentUpon>
+    <Compile Include="EditListing.aspx.cs">
+      <DependentUpon>EditListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditPosts.aspx.designer.cs">
-      <DependentUpon>EditPosts.aspx</DependentUpon>
+    <Compile Include="EditListing.aspx.designer.cs">
+      <DependentUpon>EditListing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Listing.cs" />
     <Compile Include="Login.aspx.cs">
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="ViewListing.aspx.designer.cs">
       <DependentUpon>ViewListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewUserListings.aspx.cs">
+      <DependentUpon>ViewUserListings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewUserListings.aspx.designer.cs">
+      <DependentUpon>ViewUserListings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
