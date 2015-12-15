@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="View Listing.aspx.cs" Inherits="Book_Store.View_Listing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewListing.aspx.cs" Inherits="Book_Store.View_Listing" %>
 
 <!DOCTYPE html>
 
@@ -16,6 +16,10 @@
         
         <asp:Label ID="titleLabel" runat="server" Text="Listing Title" Font-Size="XX-Large"></asp:Label>
         
+        <br />
+        
+        <br />
+        <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Book name:

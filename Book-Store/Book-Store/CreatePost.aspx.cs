@@ -45,7 +45,10 @@ namespace Book_Store
                 CloudBlockBlob defaultImageBlob = blobContainer.GetBlockBlobReference(defaultImage);
 
                 // set the default image
-                coverPhoto.ImageUrl = defaultImageBlob.Uri.ToString();
+                if (!IsPostBack)
+                {
+                    coverPhoto.ImageUrl = defaultImageBlob.Uri.ToString();
+                }
             }
             else
             {
@@ -97,6 +100,11 @@ namespace Book_Store
                     {
                         // failed to add new listing
                         throw new Exception("Failed to add new listing");
+                    }
+                    else if (confirmation == 1)
+                    {
+                        // redirect the user back to home
+                        Server.Transfer("default.aspx", false);
                     }
                 }
                 catch (Exception ex)

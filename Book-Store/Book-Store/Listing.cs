@@ -16,5 +16,6 @@ namespace Book_Store
         public string price { get; set; }
         public string description { get; set; }
         public DateTime date { get; set; }
+        public int listingID { get; set; }
     }
 }

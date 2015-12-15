@@ -16,7 +16,10 @@ namespace Book_Store
 
         protected void Page_Load(object sender, EventArgs e)
         {           
-            string loadListing = string.Format("SELECT * FROM Listings WHERE ListingID='{0}'", 1);
+            // get the listing ID from the url
+            string listingID = Request.QueryString["ListingID"];
+
+            string loadListing = string.Format("SELECT * FROM Listings WHERE ListingID='{0}'", listingID);
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["databaseConnection"].ConnectionString);
 
             try
@@ -28,6 +31,7 @@ namespace Book_Store
                 reader.Read();
 
                 // load up the fields with the returned data
+                titleLabel.Text = reader["Title"].ToString();
                 bookNameLabel.Text = reader["BookName"].ToString();
                 dateLabel.Text = reader["PostingDate"].ToString();
                 userLabel.Text = reader["EmailAddress"].ToString();

@@ -6,4 +6,7 @@
   <parameter name="BlobStorageConnectionString-Web.config Connection String" description="BlobStorageConnectionString Connection String used in web.config by the application to access the database." defaultValue="DefaultEndpointsProtocol=https;AccountName=bookstoreimages;AccountKey=iQN2GLXOGoCcLCiLeHHkLrbkWJDDqRhQ7eymrb2oFqKi0gsvsNU9Q3TYCMK5zsKrbWeogVWtx/p8q8J08/OS8w==" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BlobStorageConnectionString']/@connectionString" />
   </parameter>
+  <parameter name="databaseConnectionString-Web.config Connection String" description="databaseConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:book-store.database.windows.net;Initial Catalog=database;Integrated Security=False;User ID=anthony@book-store;Password=Antony6834;Encrypt=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Anthony\\Documents\\Book-Store\\Book-Store\\Book-Store\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseConnectionString']/@connectionString" />
+  </parameter>
 </parameters>

@@ -97,14 +97,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\defaultprofile.png" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="CreatePost.aspx" />
     <Content Include="default.aspx" />
     <Content Include="EditAccount.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Assets\placeholder.jpg" />
-    <Content Include="View Listing.aspx" />
+    <Content Include="ViewListing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -152,17 +150,15 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View Listing.aspx.cs">
-      <DependentUpon>View Listing.aspx</DependentUpon>
+    <Compile Include="ViewListing.aspx.cs">
+      <DependentUpon>ViewListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View Listing.aspx.designer.cs">
-      <DependentUpon>View Listing.aspx</DependentUpon>
+    <Compile Include="ViewListing.aspx.designer.cs">
+      <DependentUpon>ViewListing.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

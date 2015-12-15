@@ -1,19 +1,27 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="View Listing.aspx.cs" Inherits="Book_Store.View_Listing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewListing.aspx.cs" Inherits="Book_Store.View_Listing" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>View Listing</title>
+
+    <style>
+        #listing {
+            margin:auto;
+            width: 40%;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div id="home">
         <asp:HyperLink ID="homeLink" runat="server" NavigateUrl="default.aspx">Home</asp:HyperLink>
         
         <br />
         <br />
-        
+    </div>
+    <div id="listing" runat="server">
         <asp:Label ID="titleLabel" runat="server" Text="Listing Title" Font-Size="XX-Large"></asp:Label>
         
         <br />
@@ -47,6 +55,7 @@
         <asp:Label ID="priceLabel" runat="server" Text="Price"></asp:Label>
         <br />
         <br />
+        Description:
         <asp:Label ID="descriptionLabel" runat="server" Text="Description text"></asp:Label>
         
     </div>
