@@ -10,8 +10,7 @@ namespace Book_Store
     public partial class ViewUserListings : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        {     
             if (Session["LoggedIn"] != null)
             {
                 // set the title
